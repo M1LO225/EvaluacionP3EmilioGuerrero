@@ -13,6 +13,7 @@ namespace EvaluacionP3EmilioGuerrero.Modelos
         public int ID { get; set; }
         public string Nombre { get; set; }
         public string Region { get; set; }
+        public string Link { get; set; }
 
     }
 }

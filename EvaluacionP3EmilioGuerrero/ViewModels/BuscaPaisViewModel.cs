@@ -32,8 +32,9 @@ namespace EvaluacionP3EmilioGuerrero.ViewModels
             {
                 if (SetProperty(ref _buscaPais, value))
                 {
-                    OnPropertyChanged(nameof(Nombre));
+                    OnPropertyChanged(nameof(nombre));
                     OnPropertyChanged(nameof(Region));
+                    OnPropertyChanged(nameof(Mapa));
                 }
             }
         }
@@ -44,7 +45,7 @@ namespace EvaluacionP3EmilioGuerrero.ViewModels
             set => SetProperty(ref _peopleList, value);
         }
 
-        public string Nombre
+        public string nombre
         {
             get => _buscaPais.Nombre;
             set
@@ -64,6 +65,18 @@ namespace EvaluacionP3EmilioGuerrero.ViewModels
                 if (_buscaPais.Region != value)
                 {
                     _buscaPais.Region = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public string Mapa
+        {
+            get => _buscaPais.Mapa;
+            set
+            {
+                if (_buscaPais.Mapa != value)
+                {
+                    _buscaPais.Mapa = value;
                     OnPropertyChanged();
                 }
             }
@@ -104,7 +117,7 @@ namespace EvaluacionP3EmilioGuerrero.ViewModels
                 {
                     throw new Exception("El nombre no puede estar vacío.");
                 }
-                _buscaPaisRepository.agregarBuscaPais(_buscaPais.Nombre, _buscaPais.Region);
+                _buscaPaisRepository.agregarBuscaPais(_buscaPais.Nombre, _buscaPais.Region, _buscaPais.Mapa);
 
                 StatusMessage = $"Persona {_buscaPais.Nombre} guardada exitosamente.";
                 await Shell.Current.GoToAsync($"..?saved={_buscaPais.Nombre}");
@@ -128,7 +141,7 @@ namespace EvaluacionP3EmilioGuerrero.ViewModels
                 PeopleList.Remove(personaAEliminar);
                 StatusMessage = $"Se eliminó a {personaAEliminar.Nombre}.";
 
-                await Shell.Current.DisplayAlert("Aviso!", $"Gabriel Calderón acaba de eliminar a {personaAEliminar.Nombre}", "Aceptar");
+                await Shell.Current.DisplayAlert("Aviso!", $"Emilio Guerrero acaba de eliminar a {personaAEliminar.Nombre}", "Aceptar");
             }
             catch (Exception ex)
             {
@@ -148,11 +161,11 @@ namespace EvaluacionP3EmilioGuerrero.ViewModels
                     PeopleList.Add(person);
                 }
 
-                StatusMessage = $"Se cargaron {PeopleList.Count} personas.";
+                StatusMessage = $"Se cargaron {PeopleList.Count} paises.";
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Error al obtener personas: {ex.Message}";
+                StatusMessage = $"Error al obtener paises: {ex.Message}";
             }
         }
 

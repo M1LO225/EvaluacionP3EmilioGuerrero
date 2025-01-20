@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EvaluacionP3EmilioGuerrero.MainPage"
@@ -11,7 +11,7 @@
 
     <ScrollView>
         <VerticalStackLayout>
-            
+
             <VerticalStackLayout>
                 <Frame CornerRadius="50" BackgroundColor="WhiteSmoke">
                     <Label Text="Sistema de ingreso de personas a una base de datos SQLite" HorizontalTextAlignment="Center" TextColor="DarkCyan" />
@@ -21,8 +21,12 @@
                     <Entry x:Name="EGuerreroNombre" Text="{Binding Nombre}"
                  Placeholder="Ingresa un nombre" />
 
-                    <Entry x:Name="GCalderonDescripcion" Text="{Binding Region}"
+                    <Entry x:Name="EGuerreroRegion" Text="{Binding Region}"
                 Placeholder="Ingresa una descripcion" />
+
+                    <Entry x:Name="EGuerreroLinkMapa" Text="{Binding Mapa}"
+                           Placeholder="Ingresa una descripcion" />
+
                     <Button x:Name="EGuerreroAgregar"
                 Text="Añadir Persona"
                 Grid.Row="1"
@@ -71,6 +75,10 @@
                                    FontSize="Medium"
                                    HorizontalOptions="Center"
                                    VerticalOptions="Center" />
+                                        <Label Text="{Binding Mapa}"
+                                               FontSize="Medium"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="Center" />
                                     </HorizontalStackLayout>
                                 </Frame>
                             </DataTemplate>

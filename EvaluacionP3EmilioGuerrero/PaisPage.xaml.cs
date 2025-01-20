@@ -6,8 +6,8 @@ public partial class PaisPage : ContentPage
 {
     private PaisViewModel _viewModel;
     public PaisPage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _viewModel = new PaisViewModel();
         BindingContext = _viewModel;
     }

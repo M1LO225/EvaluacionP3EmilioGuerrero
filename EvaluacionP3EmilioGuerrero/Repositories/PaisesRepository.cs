@@ -1,10 +1,6 @@
 ﻿using EvaluacionP3EmilioGuerrero.Modelos;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 
 namespace EvaluacionP3EmilioGuerrero.Repositories
@@ -32,7 +28,7 @@ namespace EvaluacionP3EmilioGuerrero.Repositories
             _dbPath = dbPath;
         }
 
-        public void agregarPais(string name, string region)
+        public void agregarPais(string name, string region, string link)
         {
             int result = 0;
             try
@@ -45,10 +41,13 @@ namespace EvaluacionP3EmilioGuerrero.Repositories
                 if (string.IsNullOrEmpty(region))
                     throw new Exception("Valid description required");
 
+                if (string.IsNullOrEmpty(link))
+                    throw new Exception("Valid description required");
 
-                result = conn.Insert(new Pais { Nombre = name, Region = region});
 
-                StatusMessage = string.Format("{0} record(s) added (Nombre: {1})", result, name);
+                result = conn.Insert(new Pais { Nombre = name, Region = region, Link = link});
+
+                StatusMessage = string.Format("{0} record(s) added (Nombre: {1})", result, name, link);
             }
             catch (Exception ex)
             {

@@ -116,7 +116,11 @@ namespace EvaluacionP3EmilioGuerrero.ViewModels
                 {
                     throw new Exception("El nombre no puede estar vacío.");
                 }
-                _paisesRepository.agregarPais(_pais.Nombre, _pais.Region);
+                if (string.IsNullOrEmpty(_pais.Link))
+                {
+                    throw new Exception("El nombre no puede estar vacío.");
+                }
+                _paisesRepository.agregarPais(_pais.Nombre, _pais.Region, _pais.Link);
 
                 StatusMessage = $"Persona {_pais.Nombre} guardada exitosamente.";
                 await Shell.Current.GoToAsync($"..?saved={_pais.Nombre}");
@@ -190,13 +194,11 @@ namespace EvaluacionP3EmilioGuerrero.ViewModels
                 var httpClient = new HttpClient();
                 var response = await httpClient.GetStringAsync("https://restcountries.com/v3.1/name");
 
-                // Parsear la respuesta
                 var paises = JsonSerializer.Deserialize<List<Modelos.Pais>>(response);
 
-                // Guardar los datos en la base de datos local
                 foreach (var pais in paises)
                 {
-                    _paisesRepository.agregarPais(pais.Nombre, pais.Region);
+                    _paisesRepository.agregarPais(pais.Nombre, pais.Region, pais.Link);
                 }
 
                 StatusMessage = "Datos importados desde la API correctamente.";

@@ -32,7 +32,7 @@ namespace EvaluacionP3EmilioGuerrero.Repositories
             _dbPath = dbPath;
         }
 
-        public void agregarBuscaPais(string nombre, string region)
+        public void agregarBuscaPais(string nombre, string region, string mapa)
         {
             int result = 0;
             try
@@ -45,7 +45,10 @@ namespace EvaluacionP3EmilioGuerrero.Repositories
                 if (string.IsNullOrEmpty(region))
                     throw new Exception("Valid description required");
 
-                result = conn.Insert(new BuscaPais { Nombre = nombre, Region = region });
+                if (string.IsNullOrEmpty(mapa))
+                    throw new Exception("Valid description required");
+
+                result = conn.Insert(new BuscaPais { Nombre = nombre, Region = region, Mapa = mapa });
 
                 StatusMessage = string.Format("{0} record(s) added (Name: {1})", result, nombre);
             }

@@ -1,4 +1,4 @@
-﻿namespace EvaluacionP3EmilioGuerrero
+namespace EvaluacionP3EmilioGuerrero
 {
     public partial class MainPage : ContentPage
     {
@@ -10,7 +10,7 @@
             BindingContext = new ViewModels.BuscaPaisViewModel();
         }
 
-        
+
     }
 
 }

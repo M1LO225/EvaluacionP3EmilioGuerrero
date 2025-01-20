@@ -27,6 +27,7 @@
                     <StackLayout Padding="10">
                         <Label Text="{Binding Nombre}" FontSize="20" TextColor="White"/>
                         <Label Text="{Binding Region}" FontSize="20" TextColor="Aqua"/>
+                        <Label Text="{Binding Link}" FontSize="20" TextColor="Aqua"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
@@ -62,6 +63,10 @@
                       FontSize="Medium"
                       HorizontalOptions="Center"
                       VerticalOptions="Center" />
+                            <Label Text="{Binding Link}"
+                                   FontSize="Medium"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
                         </HorizontalStackLayout>
                     </Frame>
                 </DataTemplate>
