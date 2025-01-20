@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EvaluacionP3EmilioGuerrero.PaisPage"
+             xmlns:vm="clr-namespace:EvaluacionP3EmilioGuerrero.ViewModels"
+             Title="PaisPage">
+    <ContentPage.BindingContext>
+        <vm:PaisViewModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+        <Button x:Name="EmilioGuerreroBD"
+        Text="GuardarEnDB"
+            Grid.Row="3"
+            TextColor="DarkCyan"
+            Command="{Binding FetchFromApiCommand}" />
+        <Button x:Name="EguerreroListar"
+            Text="Revisar Listado de personas"
+                Grid.Row="3"
+                TextColor="DarkCyan"
+                Command="{Binding GetAllPaisCommand}" />
+        <CollectionView ItemsSource="{Binding Paises}">
+            <CollectionView.EmptyView>
+                <Label Text="No users found" HorizontalOptions="Center" VerticalOptions="Center" />
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10">
+                        <Label Text="{Binding Nombre}" FontSize="20" TextColor="White"/>
+                        <Label Text="{Binding Region}" FontSize="20" TextColor="Aqua"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <CollectionView x:Name="paisList" 
+                   Grid.Row="4"
+                   ItemsSource="{Binding Paises}"
+                   HeightRequest="200"
+                   VerticalScrollBarVisibility="Default"
+                   SelectionMode="Single"
+                    SelectionChangedCommand="{Binding DeletePaisCommand}"
+                    SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}"
+                  >
+
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="3" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate >
+                <DataTemplate>
+                    <Frame BorderColor="DarkCyan" CornerRadius="10" Padding="20" Margin="5" BackgroundColor="DarkCyan">
+                        <HorizontalStackLayout>
+                            <Label Text="{Binding ID}"
+                      FontSize="Small"
+                      HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                      WidthRequest="30"/>
+                            <Label Text="{Binding Nombre}"
+                      FontSize="Medium"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center" />
+                            <Label Text="{Binding Region}"
+                      FontSize="Medium"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
