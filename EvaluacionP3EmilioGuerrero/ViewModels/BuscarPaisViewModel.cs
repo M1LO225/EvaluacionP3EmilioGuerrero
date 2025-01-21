@@ -3,10 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using EvaluacionP3EmilioGuerrero.Modelos;
 using EvaluacionP3EmilioGuerrero.Repositories;
 using EvaluacionP3EmilioGuerrero.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 using System.Threading.Tasks;
 
 namespace EvaluacionP3EmilioGuerrero.ViewModels
@@ -33,29 +30,40 @@ namespace EvaluacionP3EmilioGuerrero.ViewModels
         {
             try
             {
-                var paisApi = await _apiService.GetPaisAsync(nombrePais);
+                var paisApi = await _apiService.GetPaisAsync(NombrePais);
                 if (paisApi != null)
                 {
+                    var nombreOficial = paisApi.Name?.Official ?? "Nombre no disponible";
+                    var region = paisApi.Region ?? "Región no disponible";
+                    var googleMapsLink = paisApi.Maps?.GoogleMaps ?? "Enlace no disponible";
+
                     var pais = new Pais
                     {
-                        NombreOficial = paisApi.Name.Official,
-                        Region = paisApi.Region,
-                        GoogleMapsLink = paisApi.Maps.GoogleMaps,
+                        NombreOficial = nombreOficial,
+                        Region = region,
+                        GoogleMapsLink = googleMapsLink,
                         NombreBD = "EGuerrero"
                     };
 
                     await _paisRepository.AddPaisAsync(pais);
-                    mensaje = $"País {pais.NombreOficial} guardado.";
+                    Mensaje = $"País {pais.NombreOficial} guardado exitosamente.";
                 }
                 else
                 {
-                    mensaje = "No se encontró el país.";
+                    Mensaje = "No se encontró ningún país con ese nombre.";
                 }
             }
             catch (Exception ex)
             {
-                mensaje = $"Error: {ex.Message}";
+                Mensaje = $"Error al buscar el país: {ex.Message}";
             }
+        }
+
+        [RelayCommand]
+        public void Limpiar()
+        {
+            NombrePais = string.Empty;
+            Mensaje = string.Empty;
         }
     }
 }

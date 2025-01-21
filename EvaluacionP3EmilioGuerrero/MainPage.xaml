@@ -4,88 +4,13 @@
              x:Class="EvaluacionP3EmilioGuerrero.MainPage"
              xmlns:vm="clr-namespace:EvaluacionP3EmilioGuerrero.ViewModels">
 
-    <ContentPage.BindingContext>
-        <vm:BuscaPaisViewModel />
-    </ContentPage.BindingContext>
+
 
 
     <ScrollView>
         <VerticalStackLayout>
 
-            <VerticalStackLayout>
-                <Frame CornerRadius="50" BackgroundColor="WhiteSmoke">
-                    <Label Text="Sistema de ingreso de personas a una base de datos SQLite" HorizontalTextAlignment="Center" TextColor="DarkCyan" />
-                </Frame>
-
-                <VerticalStackLayout HorizontalOptions="FillAndExpand" Padding="5">
-                    <Entry x:Name="EGuerreroNombre" Text="{Binding Nombre}"
-                 Placeholder="Ingresa un nombre" />
-
-                    <Entry x:Name="EGuerreroRegion" Text="{Binding Region}"
-                Placeholder="Ingresa una descripcion" />
-
-                    <Entry x:Name="EGuerreroLinkMapa" Text="{Binding Mapa}"
-                           Placeholder="Ingresa una descripcion" />
-
-                    <Button x:Name="EGuerreroAgregar"
-                Text="Añadir Persona"
-                Grid.Row="1"
-                    TextColor="DarkCyan"
-                Command="{Binding SaveCommand}" />
-
-                    <Label x:Name="EGuerreroMensaje"
-                Text="{Binding StatusMessage}"
-               TextColor="DarkCyan"
-               Grid.Row="2" />
-
-                    <Button x:Name="EGuerreroLista"
-                Text="Revisar Listado de paises"
-                    Grid.Row="3"
-                    TextColor="DarkCyan"
-                    Command="{Binding GetAllPeopleCommand}" />
-
-                    <CollectionView x:Name="peopleList" 
-                                Grid.Row="4"
-                                ItemsSource="{Binding PeopleList}"
-                                HeightRequest="200"
-                                VerticalScrollBarVisibility="Default"
-                                SelectionMode="Single"
-                                SelectionChangedCommand="{Binding DeletePersonCommand}"
-                                SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}"
-                               >
-
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="3" />
-                        </CollectionView.ItemsLayout>
-
-                        <CollectionView.ItemTemplate >
-                            <DataTemplate>
-                                <Frame BorderColor="DarkCyan" CornerRadius="10" Padding="20" Margin="5" BackgroundColor="DarkCyan">
-                                    <HorizontalStackLayout>
-                                        <Label Text="{Binding ID}"
-                                   FontSize="Small"
-                                   HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center"
-                                   WidthRequest="30"/>
-                                        <Label Text="{Binding Nombre}"
-                                   FontSize="Medium"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center" />
-                                        <Label Text="{Binding Region}"
-                                   FontSize="Medium"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center" />
-                                        <Label Text="{Binding Mapa}"
-                                               FontSize="Medium"
-                                               HorizontalOptions="Center"
-                                               VerticalOptions="Center" />
-                                    </HorizontalStackLayout>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </VerticalStackLayout>
-            </VerticalStackLayout>
+            
 
         </VerticalStackLayout>
     </ScrollView>

@@ -7,7 +7,7 @@ namespace EvaluacionP3EmilioGuerrero
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new ViewModels.BuscaPaisViewModel();
+            
         }
 
 

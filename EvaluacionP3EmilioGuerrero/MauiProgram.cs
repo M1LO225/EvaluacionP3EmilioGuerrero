@@ -1,4 +1,6 @@
 ﻿using EvaluacionP3EmilioGuerrero.Repositories;
+using EvaluacionP3EmilioGuerrero.Service;
+using EvaluacionP3EmilioGuerrero.ViewModels;
 using Microsoft.Extensions.Logging;
 
 namespace EvaluacionP3EmilioGuerrero
@@ -15,12 +17,23 @@ namespace EvaluacionP3EmilioGuerrero
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-            string dbPath = FileAccessHelper.GetLocalFilePath("pais.db3");
-            builder.Services.AddSingleton<PaisesRepository>(s => ActivatorUtilities.CreateInstance<PaisesRepository>(s, dbPath));
 
+            // Servicios
+            builder.Services.AddSingleton<BDService>();
+            builder.Services.AddSingleton<ApiService>();
+            builder.Services.AddSingleton<IPaisRepository, PaisRepository>();
+
+            // ViewModels
+            builder.Services.AddSingleton<BuscarPaisViewModel>();
+            builder.Services.AddSingleton<ListaPaisesViewModel>();
+
+            // Páginas
+            builder.Services.AddSingleton<BuscarPaisPage>();
+            builder.Services.AddSingleton<ListaPaisesPage>();
 
             return builder.Build();
         }
+
     }
     public class FileAccessHelper
     {

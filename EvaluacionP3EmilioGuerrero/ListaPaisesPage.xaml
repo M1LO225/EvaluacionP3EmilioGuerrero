@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EvaluacionP3EmilioGuerrero.ListaPaisesPage"
+             xmlns:vm="clr-namespace:EvaluacionP3EmilioGuerrero.ViewModels"
+             Title="ListaPaisesPage">
+
+    <VerticalStackLayout Padding="20">
+        <!-- ListView para mostrar los países -->
+        <ListView x:Name="eguerrero_listViewPaises"
+                  ItemsSource="{Binding Paises}"
+                  VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding NombreOficial}" 
+                              Detail="{Binding Region}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+    
+</ContentPage>

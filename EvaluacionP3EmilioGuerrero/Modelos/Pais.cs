@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EvaluacionP3EmilioGuerrero.Modelos
 {
-    internal class Pais
+    public class Pais
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

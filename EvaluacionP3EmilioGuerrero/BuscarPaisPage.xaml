@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EvaluacionP3EmilioGuerrero.BuscarPaisPage"
+             xmlns:vm="clr-namespace:EvaluacionP3EmilioGuerrero.ViewModels"
+             Title="Buscar País - EGuerrero">
+
+    <VerticalStackLayout Padding="20">
+        <!-- Entrada para el nombre del país -->
+        <Entry x:Name="eguerrero_entryPais"
+               Text="{Binding NombrePais}"
+               Placeholder="Ingrese el nombre del país"
+               HorizontalOptions="FillAndExpand" />
+
+        <!-- Botones de acción -->
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="Buscar"
+                    Command="{Binding BuscarPaisCommand}"
+                    HorizontalOptions="FillAndExpand" />
+            <Button Text="Limpiar"
+                    Command="{Binding LimpiarCommand}"
+                    HorizontalOptions="FillAndExpand" />
+        </HorizontalStackLayout>
+
+        <!-- Mensaje de resultados -->
+        <Label x:Name="eguerrero_labelMensaje"
+               Text="{Binding Mensaje}"
+               TextColor="Green"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

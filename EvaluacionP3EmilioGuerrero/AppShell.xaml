@@ -9,12 +9,12 @@
 
     <TabBar>
         <ShellContent
-            Title="Busqueda/Añadir"
-            ContentTemplate="{DataTemplate local:MainPage}"
-            Route="MainPage" />
-        <ShellContent
             Title="Lista"
-            ContentTemplate="{DataTemplate local:PaisPage}"/>
+            ContentTemplate="{DataTemplate local:ListaPaisesPage}"/>
+        <ShellContent
+            Title="Busqueda/Añadir"
+            ContentTemplate="{DataTemplate local:BuscarPaisPage}"/>
+        
     </TabBar>
         
 
