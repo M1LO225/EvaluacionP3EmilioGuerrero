@@ -30,5 +30,15 @@ namespace EvaluacionP3EmilioGuerrero.Service
         {
             return _database.Table<Pais>().ToListAsync();
         }
+
+        public Task<int> DeletePaisAsync(Pais pais)
+        {
+            return _database.DeleteAsync(pais);
+        }
+
+        public Task<int> UpdatePaisAsync(Pais pais)
+        {
+            return _database.UpdateAsync(pais);
+        }
     }
 }
