@@ -6,26 +6,23 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-
 namespace EvaluacionP3EmilioGuerrero.Service
 {
-    internal class PaisService
+    public class ApiService
     {
         private readonly HttpClient _httpClient;
 
-        public PaisService()
+        public ApiService()
         {
             _httpClient = new HttpClient();
         }
 
-        public async Task<List<Pais>> GetPaisAsync()
+        public async Task<PaisApi> GetPaisAsync(string nombre)
         {
-            var url = "https://restcountries.com/v3.1/name"; 
+            var url = $"https://restcountries.com/v3.1/name/{nombre}?fields=name,region,maps";
             var response = await _httpClient.GetStringAsync(url);
-            return JsonSerializer.Deserialize<List<Pais>>(response, new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            });
+            var paises = JsonSerializer.Deserialize<List<PaisApi>>(response);
+            return paises?.FirstOrDefault();
         }
     }
 }

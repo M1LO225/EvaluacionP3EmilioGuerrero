@@ -10,10 +10,10 @@ namespace EvaluacionP3EmilioGuerrero.Modelos
     internal class Pais
     {
         [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
-        public string Nombre { get; set; }
+        public int Id { get; set; }
+        public string NombreOficial { get; set; }
         public string Region { get; set; }
-        public string Link { get; set; }
-
+        public string GoogleMapsLink { get; set; }
+        public string NombreBD { get; set; }
     }
 }
